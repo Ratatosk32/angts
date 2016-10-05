@@ -18,7 +18,9 @@ export = () => {
   ];
 
   return gulp.src(src)
-    .pipe(plugins.tslint())
+    .pipe(plugins.tslint({
+      rulesDirectory: Config.CODELYZER_RULES
+    }))
     .pipe(plugins.tslint.report({
       emitError: require('is-ci')
     }));

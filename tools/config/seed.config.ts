@@ -4,22 +4,6 @@ import { argv } from 'yargs';
 
 import { Environments, InjectableDependency } from './seed.config.interfaces';
 
-/************************* DO NOT CHANGE ************************
- *
- * DO NOT make any changes in this file because it will
- * make your migration to newer versions of the seed harder.
- *
- * Your application-specific configurations should be
- * in project.config.ts. If you need to change any tasks
- * from "./tasks" overwrite them by creating a task with the
- * same name in "./projects". For further information take a
- * look at the documentation:
- *
- * 1) https://github.com/mgechev/angular2-seed/tree/master/tools
- * 2) https://github.com/mgechev/angular2-seed/wiki
- *
- *****************************************************************/
-
 /**
  * The enumeration of available environments.
  * @type {Environments}
@@ -291,6 +275,11 @@ export class SeedConfig {
   VERSION_NODE = '4.0.0';
 
   /**
+   * The ruleset to be used by `codelyzer` for linting the TypeScript files.
+   */
+  CODELYZER_RULES = customRules();
+
+  /**
    * The flag to enable handling of SCSS files
    * The default value is false. Override with the '--scss' flag.
    * @type {boolean}
@@ -344,7 +333,8 @@ export class SeedConfig {
     packageConfigPaths: [
       `/node_modules/*/package.json`,
       `/node_modules/**/package.json`,
-      `/node_modules/@angular/*/package.json`
+      `/node_modules/@angular/*/package.json`,
+      `/node_modules/@angular2-material/*/package.json`
     ],
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
@@ -387,61 +377,7 @@ export class SeedConfig {
    * The system builder configuration of the application.
    * @type {any}
    */
-  SYSTEM_BUILDER_CONFIG: any = {
-    defaultJSExtensions: true,
-    base: this.PROJECT_ROOT,
-    packageConfigPaths: [
-      join('node_modules', '*', 'package.json'),
-      join('node_modules', '@angular', '*', 'package.json')
-    ],
-    paths: {
-      [join(this.TMP_DIR, 'app', '*')]: `${this.TMP_DIR}/app/*`,
-      'node_modules/*': 'node_modules/*',
-      '*': 'node_modules/*'
-    },
-    packages: {
-      '@angular/common': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/compiler': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/core/testing': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/core': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/forms': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/http': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/platform-browser-dynamic': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      '@angular/router': {
-        main: 'index.js',
-        defaultExtension: 'js'
-      },
-      'rxjs': {
-        main: 'Rx.js',
-        defaultExtension: 'js'
-      }
-    }
-  };
+  SYSTEM_BUILDER_CONFIG: any = this.composeSystemBuildConfig();
 
   /**
    * The Autoprefixer configuration for the application.
@@ -523,6 +459,101 @@ export class SeedConfig {
   };
 
   /**
+   * Compose the SYSTEM_BUILDER_CONFIG object
+   */
+  composeSystemBuildConfig(): any {
+
+    const SYSTEM_BUILDER_CONFIG: any = {
+      defaultJSExtensions: true,
+      packageConfigPaths: [
+        join(this.PROJECT_ROOT, 'node_modules', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json'),
+        join(this.PROJECT_ROOT, 'node_modules', '@angular2-material', '*', 'package.json')
+      ],
+      paths: {
+        [join(this.TMP_DIR, 'app', '*')]: `${this.TMP_DIR}/app/*`,
+        'node_modules/*': 'node_modules/*',
+        '*': 'node_modules/*'
+      },
+      packages: {
+        '@angular/common': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/compiler': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core/testing': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/core': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/forms': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/http': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/platform-browser-dynamic': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        '@angular/router': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        },
+        'rxjs': {
+          defaultExtension: 'js'
+        },
+        '.': {
+          defaultExtension: 'js'
+        }
+      }
+    };
+
+    const components = [
+      'button',
+      'card',
+      'checkbox',
+      'dialog',
+      'grid-list',
+      'icon',
+      'input',
+      'list',
+      'menu',
+      'progress-bar',
+      'progress-circle',
+      'radio',
+      'sidenav',
+      'slider',
+      'slide-toggle',
+      'button-toggle',
+      'tabs',
+      'toolbar',
+      'tooltip'
+    ];
+
+    components.forEach(name => {
+      SYSTEM_BUILDER_CONFIG.packages[`@angular2-material/${name}`] = {
+        format: 'cjs',
+        main: `${name}.umd.js`
+      };
+    });
+
+    return SYSTEM_BUILDER_CONFIG;
+  }
+
+  /**
    * Recursively merge source onto target.
    * @param {any} target The target object (to receive values from source)
    * @param {any} source The source object (to be merged onto target)
@@ -583,6 +614,15 @@ function filterDependency(env: string, d: InjectableDependency): boolean {
 function appVersion(): number | string {
   var pkg = require('../../package.json');
   return pkg.version;
+}
+
+/**
+ * Returns the linting configuration to be used for `codelyzer`.
+ * @return {string[]} The list of linting rules.
+ */
+function customRules(): string[] {
+  var lintConf = require('../../tslint.json');
+  return lintConf.rulesDirectory;
 }
 
 /**

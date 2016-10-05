@@ -14,6 +14,8 @@ import { MockBackend } from '@angular/http/testing';
 
 import { NameListService } from '../shared/index';
 import { HomeModule } from './home.module';
+import { MaterialModule } from '../shared/material.module';
+
 
 export function main() {
   describe('Home component', () => {
@@ -21,7 +23,7 @@ export function main() {
     // Disable old forms
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [FormsModule, RouterModule, HttpModule, HomeModule],
+        imports: [FormsModule, RouterModule, HttpModule, HomeModule, MaterialModule.forRoot()],
         declarations: [TestComponent],
         providers: [
           NameListService,
@@ -48,15 +50,15 @@ export function main() {
             let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
             expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(0);
+            expect(homeDOMEl.querySelectorAll('md-list-item').length).toEqual(0);
 
             homeInstance.newName = 'Minko';
             homeInstance.addName();
 
             fixture.detectChanges();
 
-            expect(homeDOMEl.querySelectorAll('li').length).toEqual(1);
-            expect(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
+            expect(homeDOMEl.querySelectorAll('md-list-item').length).toEqual(1);
+            expect(homeDOMEl.querySelectorAll('md-list-item h3')[0].textContent).toEqual('Minko');
           });
 
       }));
