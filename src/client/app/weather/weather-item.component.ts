@@ -6,7 +6,7 @@ import {TemperatureDirective} from "./temperature.directive";
     template: `
         <article class="weather-element">
             <div class="col-1">
-                <h3>{{ item.city }}</h3>
+
                 <p class="info">{{ item.description | uppercase }}</p>
             </div>
             <div class="col-2">

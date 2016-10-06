@@ -4,12 +4,12 @@ import { MdCardModule } from '@angular2-material/card';
 import { WeatherListComponent } from './weather.component';
 import { WeatherItemComponent } from './weather-item.component';
 import { WeatherSearchComponent } from './weather-search.component';
-import {TemperatureDirective} from "./temperature.directive";
-import { FormsModule }   from '@angular/forms';
+import { TemperatureDirective } from "./temperature.directive";
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 
 @NgModule({
-    imports: [CommonModule, MdCardModule, FormsModule],
+    imports: [CommonModule, MdCardModule, FormsModule, ReactiveFormsModule],
     declarations: [WeatherListComponent, WeatherItemComponent, WeatherSearchComponent, TemperatureDirective],
     exports: [WeatherListComponent]
 })
