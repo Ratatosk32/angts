@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {WeatherItemComponent} from "./weather-item.component";
+import {WeatherItem} from "./weather-item";
+import {WeatherService} from "./weather.service";
 
 /**
  * This class represents the lazy loaded WeatherListComponent.
@@ -9,5 +11,17 @@ import {WeatherItemComponent} from "./weather-item.component";
   selector: 'weather-list',
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
+
+
+  directives: [WeatherItemComponent],
+  providers: [WeatherService]
 })
-export class WeatherListComponent { }
+
+export class WeatherListComponent implements OnInit {
+  weatherItems: WeatherItem[];
+  constructor(private _weatherService: WeatherService) {}
+
+  ngOnInit():any {
+    this.weatherItems = this._weatherService.getWeatherItems();
+  }
+}
