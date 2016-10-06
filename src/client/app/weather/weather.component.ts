@@ -12,8 +12,6 @@ import {WeatherService} from "./weather.service";
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
 
-
-  directives: [WeatherItemComponent],
   providers: [WeatherService]
 })
 

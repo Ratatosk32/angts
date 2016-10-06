@@ -1,20 +1,22 @@
-import { Component } from '@angular/core';
-
+import {Component} from "@angular/core";
+import {WeatherItem} from "./weather-item";
+import {TemperatureDirective} from "./temperature.directive";
 @Component({
     selector: 'weather-item',
     template: `
         <article class="weather-element">
             <div class="col-1">
-                <h3>Cityname</h3>
-                <p class="info">CLOUDS</p>
+                <h3>{{ item.city }}</h3>
+                <p class="info">{{ item.description | uppercase }}</p>
             </div>
             <div class="col-2">
-                <span class="temperature">32°C</span>
+                <span class="temperature" >{{ item.temperature }}°C</span>
             </div>
         </article>
     `,
-    styleUrls: ['src/client/app/weather/weather-item.css']
+    inputs: ['item: weatherItem'],
+    styleUrls: ['src/client/app/weather/weather-item.css'],
 })
 export class WeatherItemComponent {
-
+    item:WeatherItem;
 }
