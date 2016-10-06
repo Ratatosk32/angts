@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {WeatherItemComponent} from "./weather-item.component";
 
 /**
  * This class represents the lazy loaded WeatherComponent.
