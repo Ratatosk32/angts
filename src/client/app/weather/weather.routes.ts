@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
-import { WeatherComponent } from './index';
+import { WeatherListComponent } from './index';
 
 export const WeatherRoutes: Route[] = [
   {
     path: 'weather',
-    component: WeatherComponent
+    component: WeatherListComponent
   }
 ];
