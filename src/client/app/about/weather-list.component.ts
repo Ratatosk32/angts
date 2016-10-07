@@ -10,6 +10,7 @@ import {WeatherItem} from "./weather-item";
     `,
     providers: [WeatherService]
 })
+
 export class WeatherListComponent implements OnInit {
     weatherItems: WeatherItem[];
     constructor(private _weatherService: WeatherService) {}
