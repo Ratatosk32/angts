@@ -3,5 +3,3 @@
  */
 export * from './about.component';
 export * from './about.routes';
-export * from './weather.service';
-export * from './weather-item';

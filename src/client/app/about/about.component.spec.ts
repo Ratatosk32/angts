@@ -4,17 +4,17 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { WeatherModule } from './weather.module';
+import { AboutModule } from './about.module';
 
 export function main() {
-   describe('Weather component', () => {
+   describe('About component', () => {
     // Setting module for testing
     // Disable old forms
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestComponent],
-        imports: [WeatherModule]
+        imports: [AboutModule]
       });
     });
 
@@ -24,9 +24,9 @@ export function main() {
           .compileComponents()
           .then(() => {
             let fixture = TestBed.createComponent(TestComponent);
-            let weatherDOMEl = fixture.debugElement.children[0].nativeElement;
+            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          expect(weatherDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
+	          expect(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
           });
         }));
     });
@@ -34,6 +34,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-weather></sd-weather>'
+  template: '<sd-about></sd-about>'
 })
 class TestComponent {}

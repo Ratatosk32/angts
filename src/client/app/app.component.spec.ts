@@ -14,7 +14,7 @@ import {
 } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { WeatherListComponent } from './weather/weather.component';
+import { AboutComponent } from './about/about.component';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MaterialModule } from './shared/material.module';
@@ -25,14 +25,14 @@ export function main() {
 
     let config: Route[] = [
       { path: '', component: HomeComponent },
-      { path: 'weather', component: WeatherListComponent }
+      { path: 'about', component: AboutComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config), MaterialModule.forRoot()],
         declarations: [TestComponent, ToolbarComponent,
           NavbarComponent, AppComponent,
-          HomeComponent, WeatherListComponent],
+          HomeComponent, AboutComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]
