@@ -11,7 +11,9 @@
         <div class="forecast-container">
           <div class="today forecast">
             <div class="forecast-header">
-              <div class="day">Today: {{items.query?.results?.channel?.item?.condition?.date.substring(0,11) }}</div>
+              <div class="day">Today: {{ items.query?.results?.channel?.item?.condition?.date.substring(0,11) }}</div>
+              <div class="day">Sunrise: {{ items.query?.results?.channel?.astronomy?.sunrise }}</div>
+              <div class="day">Sunset: {{ items.query?.results?.channel?.astronomy?.sunset }}</div>
             </div>
             <div class="forecast-content">
               <div class="location">
