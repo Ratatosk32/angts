@@ -11,12 +11,12 @@ import { WeatherService } from './weather.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-about',
-  templateUrl: 'about.component.html',
-  styleUrls: ['about.component.css'],
+  selector: 'sd-weather',
+  templateUrl: 'weather.component.html',
+  styleUrls: ['weather.component.css'],
   providers: [WeatherService],
 })
-export class AboutComponent {
+export class WeatherComponent {
  	isVisible: boolean = false;
  	private searchTermStream = new Subject<string>();
 

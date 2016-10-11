@@ -11,12 +11,12 @@ h2 {
   margin-top: 0.83em;
 }
 
-.about-card {
+.weather-card {
   font-size: 14px;
   width: 100%;
 }
 
-.about-card-container {
+.weather-card-container {
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
