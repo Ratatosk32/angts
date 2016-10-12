@@ -26,7 +26,7 @@ export class AuthenticationService {
     var authenticatedUser = users.find(u => u.email === user.email);
     if (authenticatedUser){
       //localStorage.setItem("user", authenticatedUser);
-      this._router.navigate(['Home']);
+      this._router.navigate(['weather']);
       return true;
     }
     return false;
@@ -35,7 +35,7 @@ export class AuthenticationService {
 
    checkCredentials( ){
     if (localStorage.getItem("user") === null){
-        this._router.navigate(['Login']);
+        this._router.navigate(['home']);
     }
   }
 }
