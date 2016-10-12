@@ -8,19 +8,22 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 import { WeatherService } from './weather.service';
+import {AuthenticationService} from '../shared/authentication/index'
 
 @Component({
   moduleId: module.id,
   selector: 'sd-weather',
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
-  providers: [WeatherService],
+  providers: [WeatherService, AuthenticationService],
 })
 export class WeatherComponent {
  	isVisible: boolean = false;
  	private searchTermStream = new Subject<string>();
 
- 	constructor (private weatherService: WeatherService) {}
+ 	constructor (private weatherService: WeatherService,  private _service:AuthenticationService) {}
+  ngOnInit(){ this._service.checkCredentials(); }
+  logout() { this._service.logout(); }
 
  	search(term: string) {this.isVisible = false;  this.searchTermStream.next(term); }
   convert(temp: number) { return ((temp -32)*5/9).toFixed(0); }
@@ -33,3 +36,4 @@ export class WeatherComponent {
 
 
  }
+
