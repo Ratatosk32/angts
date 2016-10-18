@@ -8,7 +8,7 @@ export class User {
 }
 
 var users = [
-  new User('a@a.com','1111')
+  new User('admin','admin')
 ];
 
 @Injectable()
@@ -19,7 +19,7 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem("user");
-    this._router.navigate(['']);
+    this._router.navigate(['home']);
   }
 
   login(user: User){

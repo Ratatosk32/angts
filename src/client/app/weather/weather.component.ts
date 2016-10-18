@@ -8,6 +8,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 import { WeatherService } from './weather.service';
+import { RedditComponent } from './reddit';
 import {AuthenticationService} from '../shared/authentication/index'
 
 @Component({
