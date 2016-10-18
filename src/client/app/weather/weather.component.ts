@@ -9,6 +9,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { WeatherService } from './weather.service';
 import { RedditComponent } from './reddit';
+import { ArticleComponent } from './reddit-article';
 import {AuthenticationService} from '../shared/authentication/index'
 
 @Component({

@@ -4,11 +4,12 @@ import { MdCardModule } from '@angular2-material/card';
 import { MdRadioModule } from '@angular2-material/radio';
 import { WeatherComponent } from './weather.component';
 import { RedditComponent } from './reddit';
+import { ArticleComponent } from './reddit-article';
 import { MdInputModule } from '@angular2-material/input';
 
 @NgModule({
     imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule],
-    declarations: [WeatherComponent, RedditComponent],
-    exports: [WeatherComponent, RedditComponent]
+    declarations: [WeatherComponent, RedditComponent, ArticleComponent],
+    exports: [WeatherComponent, RedditComponent, ArticleComponent]
 })
 export class WeatherModule { }
