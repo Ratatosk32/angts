@@ -21,9 +21,9 @@ import { Article } from './reddit-article';
                Submit
            </button>
 
-           <!-- troubles--<div class="ui grid posts">
+           <div class="ui grid posts">
              <reddit-article *ngFor="let article of sortedArticles()" article="article"></reddit-article>
-           </div-->
+           </div>
  `
   })
 
