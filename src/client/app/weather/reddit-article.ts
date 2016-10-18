@@ -1,5 +1,25 @@
 import { Component } from '@angular/core';
 
+export class Article {
+ title: string;
+ link: string;
+ votes: number;
+
+ constructor(title: string, link: string, votes?: number) {
+  this.title = title;
+  this.link = link;
+  this.votes = votes || 0;
+ }
+
+ voteUp(): void {
+  this.votes += 1;
+ }
+
+ voteDown(): void {
+  this.votes -= 1;
+}
+}
+
 //TODO: separate to template/component and consider about formatter(indifferently to IDE)
 @Component({
  selector: 'reddit-article',
@@ -9,35 +29,24 @@ import { Component } from '@angular/core';
  template: `
      <div class="four wide column center aligned votes">
        <div class="ui statistic">
-         <div class="value">{{ votes }}</div>
+         <div class="value">{{ article.votes }}</div>
          <div class="label">Points</div>
        </div>
      </div>
      <div class="twelve wide column">
-       <a class="ui large header" href="{{ link }}">{{ title }}</a>
+       <a class="ui large header" href="{{ article.link }}">{{ article.title }}</a>
        <ul class="ui big horizontal list voters">
-         <li class="item"><a href (click)="voteUp(); false"><i class="arrow up icon"></i>upvote</a></li>
-         <li class="item"><a href (click)="voteDown(); false"><i class="arrow down icon"></i>downvote</a></li>
+         <li class="item"><a (click)="votesUp(); false"><i class="arrow up icon"></i></a></li>
+         <li class="item"><a (click)="votesDown(); false"><i class="arrow down icon"></i></a></li>
        </ul>
      </div>`
      })
 
+
 export class ArticleComponent {
-  votes: number;
-  title: string;
-  link: string;
+  article: Article = new Article('Angular', 'http://angular.io', 3);
 
-constructor() {
-  this.title = 'Angular 2';
-  this.link = 'http://angular.io';
-  this.votes = 10;
-}
+  votesUp(): void { this.article.voteUp(); }
 
-voteUp() {
-  this.votes += 1;
-}
-
-voteDown() {
-  this.votes -= 1;
-}
+  votesDown(): void { this.article.voteDown(); }
 }
