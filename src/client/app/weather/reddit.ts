@@ -22,7 +22,7 @@ import { Article } from './reddit-article';
            </button>
 
            <div class="ui grid posts">
-             <reddit-article *ngFor="let article of sortedArticles()" article="article"></reddit-article>
+             <reddit-article *ngFor="let article of sortedArticles()" [article]="article"></reddit-article>
            </div>
  `
   })

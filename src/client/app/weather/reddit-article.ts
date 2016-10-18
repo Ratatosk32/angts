@@ -11,13 +11,9 @@ export class Article {
     this.votes = votes || 0;
   }
 
-  voteUp(): void {
-    this.votes += 1;
-  }
+  voteUp(): void { this.votes += 1; }
 
-  voteDown(): void {
-    this.votes -= 1;
-  }
+  voteDown(): void { this.votes -= 1; }
 }
 
 //TODO: separate to template/component and consider about formatter(indifferently to IDE)
@@ -37,8 +33,8 @@ export class Article {
      <div class="twelve wide column">
        <a class="ui large header" href="{{ article.link }}">{{ article.title }}</a>
        <ul class="ui big horizontal list voters">
-         <li class="item"><a href (click)="voteUp()"><i class="arrow up icon"></i>upvote</a></li>
-         <li class="item"><a href (click)="voteDown()"><i class="arrow down icon"></i>downvote</a></li>
+         <li class="item"><a (click)="votesUp();false"><i class="arrow up icon"></i>upvote</a></li>
+         <li class="item"><a (click)="votesDown();false"><i class="arrow down icon"></i>downvote</a></li>
        </ul>
       </div>
      `
@@ -46,7 +42,7 @@ export class Article {
 
 
 export class ArticleComponent {
-  article: Article = new Article('Angular', 'http://angular.io', 3);
+  article: Article;
 
   votesUp(): void { this.article.voteUp(); }
 
