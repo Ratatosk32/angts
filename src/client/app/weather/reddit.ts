@@ -5,26 +5,15 @@ import { Article } from './reddit-article';
 @Component({
   selector: 'reddit',
   template: `
-           <h4 class="ui header">Add a Link</h4>
-           <form class="home-form">
-               <md-input #newTitle name="title"
-                         class="home-input" ngDefaultControl
-                         placeholder="Name">
-               </md-input>
-               <md-input #newLink name="link"
-                         class="home-input" ngDefaultControl
-                         placeholder="Link">
-               </md-input>
-           </form>
+            <button class="newOne" md-fab (click)="addArticle(newTitle, newLink)"><md-icon>add</md-icon></button>
+            <div class="one wide column ui middle aligned">
+                <md-input #newTitle name="title" ngDefaultControl placeholder="Name"></md-input>
+                <md-input #newLink name="link" ngDefaultControl placeholder="Link"></md-input>
+            </div>
 
-           <button md-button  color="primary" (click)="addArticle(newTitle, newLink)" type="submit" name="action">
-               Submit
-           </button>
-
-           <div class="ui grid posts">
-             <reddit-article *ngFor="let article of sortedArticles()" [article]="article"></reddit-article>
-           </div>
- `
+            <div class="ui grid posts">
+                <reddit-article *ngFor="let article of sortedArticles()" [article]="article"></reddit-article>
+            </div>`
   })
 
 export class RedditComponent {
@@ -32,9 +21,7 @@ export class RedditComponent {
 
   constructor() {
     this.articles = [
-      new Article('Angular 2', 'http://angular.io', 3),
-      new Article('Fullstack', 'http://fullstack.io', 2),
-      new Article('Angular Homepage', 'http://angular.io', 1),
+      new Article('StackOverflow', 'http://stackoverflow.com/', 10)
     ];
   }
 

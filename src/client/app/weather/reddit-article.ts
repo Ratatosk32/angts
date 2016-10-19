@@ -24,17 +24,17 @@ export class Article {
  },
  inputs: ['article'],
  template: `
-     <div class="four wide column center aligned votes">
+     <div class="one wide column center aligned votes">
        <div class="ui statistic">
          <div class="value">{{ article.votes }}</div>
-         <div class="label">Points</div>
+         <div class="label">Votes</div>
        </div>
      </div>
-     <div class="twelve wide column">
-       <a class="ui large header" href="{{ article.link }}">{{ article.title }}</a>
+     <div class="three wide column ui middle aligned">
+       <a class="ui large header" target="_blank" href="{{ article.link }}">{{ article.title }}</a>
        <ul class="ui big horizontal list voters">
-         <li class="item"><a (click)="votesUp();false"><i class="arrow up icon"></i>upvote</a></li>
-         <li class="item"><a (click)="votesDown();false"><i class="arrow down icon"></i>downvote</a></li>
+         <li class="item"><a (click)="votesUp();false"><i class="arrow up icon"></i></a></li>
+         <li class="item"><a (click)="votesDown();false"><i class="arrow down icon"></i></a></li>
        </ul>
       </div>
      `
