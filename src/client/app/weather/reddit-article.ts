@@ -1,5 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 
+
 export class Article {
   title: string;
   link: string;

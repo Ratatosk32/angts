@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Article } from './reddit-article';
 
+
+
 //TODO: separate to template/component and rename it
 @Component({
   selector: 'reddit',
   template: `
+
         <md-card>
             <button md-fab style="background-color: #009688" (click)="addArticle(newTitle, newLink)">
                 <md-icon>add</md-icon>
@@ -18,7 +21,8 @@ import { Article } from './reddit-article';
                 <reddit-article *ngFor="let article of sortedArticles()" [article]="article"
                       (removeEmitter)="removeArticle($event)"></reddit-article>
             </div>
-        </md-card>`
+        </md-card>
+        `
   })
 
 export class RedditComponent {
@@ -38,7 +42,7 @@ export class RedditComponent {
   }
 
   removeArticle(article: Article): void {
-    this.articles.every(function(element, index, array) {
+    this.articles.forEach(function(element, index, array) {
     // TODO: change to ID
       if (element.title == article.title) {
         array.splice(index, 1);

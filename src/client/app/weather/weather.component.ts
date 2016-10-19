@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-//import { JSONP_PROVIDERS }  from '@angular/http';
-import { Observable }       from 'rxjs/Observable';
-import { Subject }          from 'rxjs/Subject';
+//import { JSONP_PROVIDERS } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
 import { WeatherService } from './weather.service';
-import { RedditComponent } from './reddit';
-import { ArticleComponent } from './reddit-article';
-import {AuthenticationService} from '../shared/authentication/index'
+import { AuthenticationService } from '../shared/authentication/index'
 
 @Component({
   moduleId: module.id,

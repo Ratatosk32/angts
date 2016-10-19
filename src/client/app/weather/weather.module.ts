@@ -7,9 +7,10 @@ import { WeatherComponent } from './weather.component';
 import { RedditComponent } from './reddit';
 import { ArticleComponent } from './reddit-article';
 import { MdInputModule } from '@angular2-material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule],
+    imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule, FormsModule, ReactiveFormsModule],
     declarations: [WeatherComponent, RedditComponent, ArticleComponent],
     exports: [WeatherComponent, RedditComponent, ArticleComponent]
 })
