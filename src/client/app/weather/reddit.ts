@@ -42,7 +42,8 @@ export class RedditComponent {
     // TODO: change to ID
       if (element.title == article.title) {
         array.splice(index, 1);
-      }});
+        return true;
+      } return false;});
   }
 
   sortedArticles(): Article[] {

@@ -1,5 +1,7 @@
-<md-card class="home-card">
-  <md-card-title>Authentication<span>{{ errorMsg}}</span></md-card-title>
+<div class="ui one column stackable center aligned page grid">
+  <div class="column four wide">
+    <md-card>
+    <md-card-title>Authentication<span>{{ errorMsg}}</span></md-card-title>
     <md-card-content>
       <md-input
         [(ngModel)]="user.email"
@@ -22,4 +24,6 @@
     <md-card-actions>
       <button md-button  color="primary" (click)="login()" type="submit" name="action">Login</button>
     </md-card-actions>
-</md-card>
+    </md-card>
+  </div>
+</div>
