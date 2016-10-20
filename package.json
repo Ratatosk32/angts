@@ -64,6 +64,7 @@
     "@types/selenium-webdriver": "2.44.*",
     "@types/systemjs": "^0.19.30",
     "@types/yargs": "^0.0.30",
+    "@types/youtube": "^0.0.27",
     "@types/zone.js": "^0.0.26",
     "async": "^2.0.1",
     "autoprefixer": "^6.3.7",
