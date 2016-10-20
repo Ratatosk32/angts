@@ -1,4 +1,16 @@
 <div class="weather-card-container">
+  <md-card>
+    <md-input #str (keyup)="searchTube(str.value)" class="home-input" ngDefaultControl
+              placeholder="youtube search">
+    </md-input>
+    <div class="row-card">
+      <div class="youtube-card" *ngFor="let video of results | async"><p>{{video.snippet.title}}</p>
+      <img class="image-size" [src]="video.snippet.thumbnails.default.url"/>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="weather-card-container">
     <md-card class="weather-card">
       <form class="home-form">
           <md-input #term (keyup)="search(term.value)"

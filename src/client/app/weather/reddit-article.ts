@@ -50,7 +50,7 @@ export class Article {
 export class ArticleComponent {
   article: Article;
 
-  removeEmitter: EventEmitter<Article>;
+  removeEmitter: EventEmitter<any>;
 
   constructor() {
     this.removeEmitter = new EventEmitter();
