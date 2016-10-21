@@ -8,12 +8,13 @@ import {RedditComponent} from "./reddit";
 import {ArticleComponent} from "./reddit-article";
 import {MdInputModule} from "@angular2-material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-
+import {YoutubePlayerMiniModule} from "ng2-youtube-player-mini/ng2-youtube-player-mini";
 
 @NgModule({
-  imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule, FormsModule, ReactiveFormsModule, YoutubePlayerMiniModule],
   declarations: [WeatherComponent, RedditComponent, ArticleComponent],
   exports: [WeatherComponent, RedditComponent, ArticleComponent]
 })
+
 export class WeatherModule {
 }

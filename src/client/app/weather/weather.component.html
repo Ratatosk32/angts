@@ -5,7 +5,9 @@
     </md-input>
     <div class="row-card">
       <div class="youtube-card" *ngFor="let video of results | async"><p>{{video.snippet.title}}</p>
-        <img class="image-size" [src]="video.snippet.thumbnails.default.url"/>
+        <!--<img class="image-size" [src]="video.snippet.thumbnails.default.url"/>-->
+        <youtube-player [playerId]='"player"' [width]="320" [height]="240" [videoId]="video.id.videoId">
+        </youtube-player>
       </div>
     </div>
   </md-card>

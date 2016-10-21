@@ -20,6 +20,7 @@ export class WeatherComponent {
   isVisible: boolean = false;
   private searchTermStream = new Subject<string>();
   private searchTubeStream = new Subject<string>();
+  private videoId: String = 'wFfBwUrQid4';
 
   constructor(public youtube: YouTubeAPI,
               private weatherService: WeatherService,
