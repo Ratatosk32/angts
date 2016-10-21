@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import {Component, EventEmitter} from "@angular/core";
 
 
 export class Article {
@@ -12,20 +12,24 @@ export class Article {
     this.votes = votes || 0;
   }
 
-  voteUp(): void { this.votes += 1; }
+  voteUp(): void {
+    this.votes += 1;
+  }
 
-  voteDown(): void { this.votes -= 1; }
+  voteDown(): void {
+    this.votes -= 1;
+  }
 }
 
 //TODO: separate to template/component and consider about formatter(indifferently to IDE)
 @Component({
- selector: 'reddit-article',
- host: {
-   class: 'row'
- },
- inputs: ['article'],
- outputs: ['removeEmitter'],
- template: `
+  selector: 'reddit-article',
+  host: {
+    class: 'row'
+  },
+  inputs: ['article'],
+  outputs: ['removeEmitter'],
+  template: `
      <div class="one wide column center aligned votes">
        <div class="ui statistic">
          <div class="value">{{ article.votes }}</div>
@@ -40,11 +44,11 @@ export class Article {
        </ul>
       </div>
       <div class="twelve wide column ui right aligned" >
-        <button md-fab style="background-color: light-grey" disabled><md-icon>create</md-icon></button>
+        <button md-fab style="background-color: grey" disabled><md-icon>create</md-icon></button>
         <button md-fab style="background-color: grey" (click)="remove();"><md-icon>delete</md-icon></button>
       </div>
      `
-     })
+})
 
 
 export class ArticleComponent {
@@ -56,9 +60,15 @@ export class ArticleComponent {
     this.removeEmitter = new EventEmitter();
   }
 
-  votesUp(): void { this.article.voteUp(); }
+  votesUp(): void {
+    this.article.voteUp();
+  }
 
-  votesDown(): void { this.article.voteDown(); }
+  votesDown(): void {
+    this.article.voteDown();
+  }
 
-  remove(): void { this.removeEmitter.emit(this.article); }
+  remove(): void {
+    this.removeEmitter.emit(this.article);
+  }
 }

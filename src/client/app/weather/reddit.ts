@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Article } from './reddit-article';
-
+import {Component} from "@angular/core";
+import {Article} from "./reddit-article";
 
 
 //TODO: separate to template/component and rename it
@@ -23,7 +22,7 @@ import { Article } from './reddit-article';
             </div>
         </md-card>
         `
-  })
+})
 
 export class RedditComponent {
   articles: Article[];
@@ -42,12 +41,14 @@ export class RedditComponent {
   }
 
   removeArticle(article: Article): void {
-    this.articles.forEach(function(element, index, array) {
-    // TODO: change to ID
+    this.articles.forEach(function (element, index, array) {
+      // TODO: change to ID
       if (element.title == article.title) {
         array.splice(index, 1);
         return true;
-      } return false;});
+      }
+      return false;
+    });
   }
 
   sortedArticles(): Article[] {

@@ -18,21 +18,23 @@ export class YoutubePlayerService {
 
   private isFullscreen: boolean = false;
   private defaultSizes = {
-      height: 270,
-      width: 367
+    height: 270,
+    width: 367
   };
 
-  constructor (private zone: NgZone) {
+  constructor(private zone: NgZone) {
     this.createApi();
   }
 
-  private createApi () {
+  private createApi() {
     this.api = new ReplaySubject(1);
-    const onYouTubeIframeAPIReady = () => { this.api.next(window.YT) }
+    const onYouTubeIframeAPIReady = () => {
+      this.api.next(window.YT)
+    }
     window['onYouTubeIframeAPIReady'] = onYouTubeIframeAPIReady;
   }
 
-  loadPlayerApi () {
+  loadPlayerApi() {
     const doc = window.document;
     let playerApiScript = doc.createElement("script");
     playerApiScript.type = "text/javascript";
@@ -40,7 +42,7 @@ export class YoutubePlayerService {
     doc.body.appendChild(playerApiScript);
   }
 
-  setupPlayer (elementId: string, outputs: PlayerOutputs, sizes: PlayerSize, videoId: string) {
+  setupPlayer(elementId: string, outputs: PlayerOutputs, sizes: PlayerSize, videoId: string) {
     const createPlayer = () => {
       if (window.YT.Player) {
         this.createPlayer(elementId, outputs, sizes, videoId);
@@ -49,11 +51,11 @@ export class YoutubePlayerService {
     this.api.subscribe(createPlayer);
   }
 
-  play (player: YT.Player) {
+  play(player: YT.Player) {
     player.playVideo();
   }
 
-  pause (player: YT.Player) {
+  pause(player: YT.Player) {
     player.pauseVideo();
   }
 
@@ -63,7 +65,7 @@ export class YoutubePlayerService {
     this.play(player);
   }
 
-  isPlaying (player: YT.Player) {
+  isPlaying(player: YT.Player) {
     // because YT is not loaded yet 1 is used - YT.PlayerState.PLAYING
     const isPlayerReady: any = player && player.getPlayerState;
     const playerState = isPlayerReady ? player.getPlayerState() : {};
@@ -73,7 +75,7 @@ export class YoutubePlayerService {
     return isPlayerPlaying;
   }
 
-  createPlayer (elementId: string, outputs: PlayerOutputs, sizes: PlayerSize, videoId: string) {
+  createPlayer(elementId: string, outputs: PlayerOutputs, sizes: PlayerSize, videoId: string) {
     const service = this;
     const playerSize = {
       height: sizes.height || this.defaultSizes.height,
@@ -83,17 +85,17 @@ export class YoutubePlayerService {
       videoId: videoId || '',
       // playerVars: playerVars,
       events: {
-          onReady: (ev: any) => {
-            this.zone.run(() => outputs.ready && outputs.ready.next(ev.target));
-          },
-          onStateChange: (ev: any) => {
-            this.zone.run(() => outputs.change && outputs.change.next(ev));
-            // this.zone.run(() => onPlayerStateChange(ev));
-          }
+        onReady: (ev: any) => {
+          this.zone.run(() => outputs.ready && outputs.ready.next(ev.target));
+        },
+        onStateChange: (ev: any) => {
+          this.zone.run(() => outputs.change && outputs.change.next(ev));
+          // this.zone.run(() => onPlayerStateChange(ev));
+        }
       }
     }));
 
-    function onPlayerStateChange (event: any) {
+    function onPlayerStateChange(event: any) {
       const state = event.data;
       // play the next song if its not the end of the playlist
       // should add a "repeat" feature
@@ -102,18 +104,18 @@ export class YoutubePlayerService {
       }
 
       if (state === YT.PlayerState.PAUSED) {
-          // service.playerState = YT.PlayerState.PAUSED;
+        // service.playerState = YT.PlayerState.PAUSED;
       }
       if (state === YT.PlayerState.PLAYING) {
-          // service.playerState = YT.PlayerState.PLAYING;
+        // service.playerState = YT.PlayerState.PLAYING;
       }
       // console.log('state changed', state);
       // dispatch STATE CHANGE
     }
   }
 
-  toggleFullScreen (player: YT.Player, isFullScreen: boolean | null | undefined) {
-    let { height, width } = this.defaultSizes;
+  toggleFullScreen(player: YT.Player, isFullScreen: boolean | null | undefined) {
+    let {height, width} = this.defaultSizes;
 
     if (!isFullScreen) {
       height = window.innerHeight;
@@ -124,7 +126,7 @@ export class YoutubePlayerService {
   }
 
   // adpoted from uid
-  generateUniqueId () {
+  generateUniqueId() {
     const len = 7;
     return Math.random().toString(35).substr(2, len);
   }

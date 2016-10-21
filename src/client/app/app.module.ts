@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { APP_BASE_HREF } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
-import { routes } from './app.routes';
-
-import { WeatherModule } from './weather/weather.module';
-import { HomeModule } from './home/home.module';
-import { SharedModule } from './shared/shared.module';
+import {NgModule} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {APP_BASE_HREF} from "@angular/common";
+import {RouterModule} from "@angular/router";
+import {HttpModule} from "@angular/http";
+import {AppComponent} from "./app.component";
+import {routes} from "./app.routes";
+import {WeatherModule} from "./weather/weather.module";
+import {HomeModule} from "./home/home.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), WeatherModule, HomeModule, SharedModule.forRoot()],
@@ -21,4 +20,5 @@ import { SharedModule } from './shared/shared.module';
 
 })
 
-export class AppModule { }
+export class AppModule {
+}

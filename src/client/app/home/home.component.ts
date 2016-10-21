@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/index';
-import { AuthenticationService, User } from '../shared/authentication/index'
+import {Component, OnInit} from "@angular/core";
+import {AuthenticationService, User} from "../shared/authentication/index";
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -19,16 +18,17 @@ export class HomeComponent implements OnInit {
   errorMessage: string;
   names: any[] = [];
 
-  constructor(private _service:AuthenticationService) {}
+  constructor(private _service: AuthenticationService) {
+  }
 
   ngOnInit() {
   }
 
-  public user = new User('','');
+  public user = new User('', '');
   public errorMsg = '';
 
   login() {
-    if(!this._service.login(this.user)) {
+    if (!this._service.login(this.user)) {
       this.errorMsg = ' FAILED';
     }
   }

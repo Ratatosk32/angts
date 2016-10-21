@@ -1,30 +1,30 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
 
 export class User {
-  constructor(
-    public email: string,
-    public password: string) { }
+  constructor(public email: string,
+              public password: string) {
+  }
 }
 
 var users = [
-  new User('admin','admin')
+  new User('admin', 'admin')
 ];
 
 @Injectable()
 export class AuthenticationService {
 
-  constructor(
-    private _router: Router){}
+  constructor(private _router: Router) {
+  }
 
   logout() {
     localStorage.removeItem("user");
     this._router.navigate(['home']);
   }
 
-  login(user: User){
+  login(user: User) {
     var authenticatedUser = users.find(u => u.email === user.email);
-    if (authenticatedUser){
+    if (authenticatedUser) {
       //localStorage.setItem("user", authenticatedUser);
       this._router.navigate(['weather']);
       return true;
@@ -32,9 +32,9 @@ export class AuthenticationService {
     return false;
   }
 
-   checkCredentials( ){
-    if (localStorage.getItem("user") === null){
-        this._router.navigate(['home']);
+  checkCredentials() {
+    if (localStorage.getItem("user") === null) {
+      this._router.navigate(['home']);
     }
   }
 }
