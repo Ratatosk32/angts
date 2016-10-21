@@ -1,7 +1,15 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
-import { YoutubePlayerService } from './youtube-player.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+  OnInit,
+  AfterContentInit,
+  ElementRef,
+  ViewChild
+} from "@angular/core";
+import {YoutubePlayerService} from "./youtube-player.service";
 
 @Component({
 	selector: 'youtube-player',

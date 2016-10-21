@@ -1,7 +1,6 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
-import { Injectable, NgZone, EventEmitter } from '@angular/core';
-import { window } from '@angular/platform-browser/src/facade/browser';
-import { ReplaySubject } from 'rxjs/ReplaySubject'
+import {Injectable, NgZone, EventEmitter} from "@angular/core";
+import {window} from "@angular/platform-browser/src/facade/browser";
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 export interface PlayerOutputs {
   ready?: EventEmitter<YT.Player>;
