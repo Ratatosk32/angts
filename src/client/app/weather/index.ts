@@ -1,3 +1,3 @@
 export * from './weather.component';
 export * from './weather.routes';
-export * from './reddit'
+export * from '../shared/reddit/reddit.component'

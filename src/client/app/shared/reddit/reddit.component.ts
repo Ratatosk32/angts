@@ -1,12 +1,10 @@
 import {Component} from "@angular/core";
 import {Article} from "./reddit-article";
 
-
 //TODO: separate to template/component and rename it
 @Component({
   selector: 'reddit',
   template: `
-
         <md-card>
             <button md-fab style="background-color: #009688" (click)="addArticle(newTitle, newLink)">
                 <md-icon>add</md-icon>

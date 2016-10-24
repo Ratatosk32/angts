@@ -4,16 +4,15 @@ import {MdCardModule} from "@angular2-material/card";
 import {MdRadioModule} from "@angular2-material/radio";
 import {MdIconModule} from "@angular2-material/icon";
 import {WeatherComponent} from "./weather.component";
-import {RedditComponent} from "./reddit";
-import {ArticleComponent} from "./reddit-article";
 import {MdInputModule} from "@angular2-material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {YoutubePlayerMiniModule} from "ng2-youtube-player-mini/ng2-youtube-player-mini";
+import {RedditModule} from "../shared/reddit/reddit.module";
 
 @NgModule({
-  imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule, FormsModule, ReactiveFormsModule, YoutubePlayerMiniModule],
-  declarations: [WeatherComponent, RedditComponent, ArticleComponent],
-  exports: [WeatherComponent, RedditComponent, ArticleComponent]
+  imports: [CommonModule, MdCardModule, MdRadioModule, MdInputModule, MdIconModule, YoutubePlayerMiniModule,
+    RedditModule],
+  declarations: [WeatherComponent],
+  exports: [WeatherComponent]
 })
 
 export class WeatherModule {

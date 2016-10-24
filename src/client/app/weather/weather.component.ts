@@ -7,7 +7,6 @@ import {YouTubeAPI} from "./youtube";
 import "rxjs/Rx";
 import {WeatherService} from "./weather.service";
 import {AuthenticationService} from "../shared/authentication/index";
-//import { JSONP_PROVIDERS } from '@angular/http';
 
 @Component({
   moduleId: module.id,
