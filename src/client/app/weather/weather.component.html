@@ -1,24 +1,9 @@
 <div class="weather-card-container">
-  <md-card>
-    <md-input #str (keyup)="searchTube(str.value)" class="home-input" ngDefaultControl
-              placeholder="youtube search">
-    </md-input>
-    <div class="row-card">
-      <div class="youtube-card" *ngFor="let video of results | async">
-          <p>{{ video.snippet.title?video.snippet.title.substring(0,20):video.snippet.title }}</p>
-        <!--<img class="image-size" [src]="video.snippet.thumbnails.default.url"/>-->
-        <youtube-player [playerId]='"player"' [width]="320" [height]="240" [videoId]="video.id.videoId">
-        </youtube-player>
-      </div>
-    </div>
-  </md-card>
-</div>
-<div class="weather-card-container">
   <md-card class="weather-card">
     <form class="home-form">
       <md-input #term (keyup)="search(term.value)"
                 class="home-input" ngDefaultControl
-                placeholder="Find your location...">
+                placeholder="your location...">
       </md-input>
     </form>
 
@@ -51,4 +36,7 @@
 </div>
 <div class="weather-card-container">
   <reddit></reddit>
+</div>
+<div class="weather-card-container">
+  <youtube-search></youtube-search>
 </div>

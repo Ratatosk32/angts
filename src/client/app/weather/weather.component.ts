@@ -3,7 +3,6 @@ import {Subject} from "rxjs/Subject";
 import "rxjs/add/operator/debounceTime";
 import "rxjs/add/operator/distinctUntilChanged";
 import "rxjs/add/operator/switchMap";
-import {YouTubeAPI} from "./youtube";
 import "rxjs/Rx";
 import {WeatherService} from "./weather.service";
 
@@ -12,15 +11,13 @@ import {WeatherService} from "./weather.service";
   selector: 'sd-weather',
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
-  providers: [WeatherService, YouTubeAPI],
+  providers: [WeatherService],
 })
 export class WeatherComponent {
   isVisible: boolean = false;
   private searchTermStream = new Subject<string>();
-  private searchTubeStream = new Subject<string>();
 
-  constructor(public youtube: YouTubeAPI,
-              private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit() {}
@@ -28,10 +25,6 @@ export class WeatherComponent {
   search(term: string) {
     this.isVisible = false;
     this.searchTermStream.next(term);
-  }
-
-  searchTube(str: string) {
-    this.searchTubeStream.next(str);
   }
 
   convert(temp: number) {
@@ -47,11 +40,6 @@ export class WeatherComponent {
       console.log(data);
       this.items = data
     });
-
-  results = this.searchTubeStream
-    .debounceTime(200)
-    .distinctUntilChanged()
-    .switchMap(query => this.youtube.search(query));
 }
 
 
