@@ -14,11 +14,13 @@ var users = [
 @Injectable()
 export class AuthenticationService {
 
+  isAuthenticated: boolean = false;
   constructor(private _router: Router) {
   }
 
   logout() {
     localStorage.removeItem("user");
+    this.isAuthenticated = false;
     this._router.navigate(['']);
   }
 
@@ -27,10 +29,13 @@ export class AuthenticationService {
     if (authenticatedUser) {
       //localStorage.setItem("user", authenticatedUser);
       this._router.navigate(['weather']);
+      this.isAuthenticated = true;
       return true;
     }
     return false;
   }
+
+  getIsAuthenticated(): boolean { return this.isAuthenticated; }
 /*
   checkCredentials() {
     if (localStorage.getItem("user") === null) {
