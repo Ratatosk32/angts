@@ -19,7 +19,7 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem("user");
-    this._router.navigate(['home']);
+    this._router.navigate(['']);
   }
 
   login(user: User) {
@@ -31,10 +31,10 @@ export class AuthenticationService {
     }
     return false;
   }
-
+/*
   checkCredentials() {
     if (localStorage.getItem("user") === null) {
       this._router.navigate(['home']);
     }
-  }
+  }*/
 }

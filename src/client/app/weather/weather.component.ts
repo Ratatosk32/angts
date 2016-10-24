@@ -28,7 +28,7 @@ export class WeatherComponent {
   }
 
   ngOnInit() {
-    this._service.checkCredentials();
+   // this._service.checkCredentials();
   }
 
   logout() {
