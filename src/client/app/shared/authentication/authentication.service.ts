@@ -8,7 +8,7 @@ export class User {
 }
 
 var users = [
-  new User('admin', 'admin')
+  new User('a', 'a')
 ];
 
 @Injectable()

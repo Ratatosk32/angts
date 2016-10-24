@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import {AuthenticationService} from "../authentication/authentication.service";
+import {Component, OnInit} from "@angular/core";
+import {AuthenticationService, User} from "../authentication/authentication.service";
 
 /**
  * This class represents the toolbar component.
@@ -12,11 +12,34 @@ import {AuthenticationService} from "../authentication/authentication.service";
   providers: [ AuthenticationService]
 })
 
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
+  isAuth: boolean = false;
+
   constructor(private _service: AuthenticationService){};
 
-  logout() { this._service.logout(); }
+  logout() {
+    this._service.logout();
+    this.isAuth = false;
+  }
 
-  isAuthenticated() { return this._service.getIsAuthenticated(); }
+  checkCredentials() { this.isAuth = this._service.getIsAuthenticated(); }
+
+  newName: string = '';
+  names: any[] = [];
+
+  ngOnInit() {
+  }
+
+  public user = new User('', '');
+  public errorMsg = '';
+
+  login() {
+    if (!this._service.login(this.user)) {
+      this.errorMsg = ' FAILED';
+      this.isAuth = false;
+    } else {
+      this.checkCredentials();
+    }
+  }
 }
 

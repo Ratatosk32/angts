@@ -5,8 +5,16 @@
   <button md-icon-button color="primary" [md-menu-trigger-for]="menu">
     <md-icon class="sd-toolbar-icon">menu</md-icon>
   </button>
-  <!--<span>Angular 2/Typescript sandbox</span>-->
   <span class="sd-toolbar-filler"></span>
-  <button md-button (click)="logout()" *ngIf="isAuthenticated"> Logout </button>
+  <md-input *ngIf="!isAuth"  [(ngModel)]="user.email" class="validate" type="email"
+            class="home-input" ngDefaultControl>
+  </md-input>
+  <md-input *ngIf="!isAuth"   [(ngModel)]="user.password"  class="validate"
+            class="home-input"  type="password"    ngDefaultControl>
+  </md-input>
+  <button md-fab (click)="login()" *ngIf="!isAuth" style="background-color: transparent">
+    <md-icon>redo</md-icon></button>
+  <button md-fab  (click)="logout()" *ngIf="isAuth" style="background-color: transparent">
+    <md-icon>undo</md-icon></button>
   <!--<md-icon svgSrc="./assets/svg/more.svg" class="sd-toolbar-icon">code</md-icon>-->
 </md-toolbar>

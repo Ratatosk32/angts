@@ -8,7 +8,6 @@ import {NameListService} from "../shared/name-list/index";
   imports: [CommonModule, SharedModule],
   declarations: [HomeComponent],
   exports: [HomeComponent],
-  providers: [NameListService]
 })
 export class HomeModule {
 }

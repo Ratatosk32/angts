@@ -6,33 +6,24 @@ import "rxjs/add/operator/switchMap";
 import {YouTubeAPI} from "./youtube";
 import "rxjs/Rx";
 import {WeatherService} from "./weather.service";
-import {AuthenticationService} from "../shared/authentication/index";
 
 @Component({
   moduleId: module.id,
   selector: 'sd-weather',
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
-  providers: [WeatherService, AuthenticationService, YouTubeAPI],
+  providers: [WeatherService, YouTubeAPI],
 })
 export class WeatherComponent {
   isVisible: boolean = false;
   private searchTermStream = new Subject<string>();
   private searchTubeStream = new Subject<string>();
-  private videoId: String = 'wFfBwUrQid4';
 
   constructor(public youtube: YouTubeAPI,
-              private weatherService: WeatherService,
-              private _service: AuthenticationService) {
+              private weatherService: WeatherService) {
   }
 
-  ngOnInit() {
-   // this._service.checkCredentials();
-  }
-
-  logout() {
-    this._service.logout();
-  }
+  ngOnInit() {}
 
   search(term: string) {
     this.isVisible = false;
