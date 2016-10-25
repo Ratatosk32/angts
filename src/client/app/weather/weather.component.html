@@ -1,33 +1,31 @@
-  <md-card>
-    <form class="home-form">
-      <md-input #term (keyup)="search(term.value)"
-                class="home-input" ngDefaultControl
-                placeholder="your location...">
-      </md-input>
-    </form>
+<md-card>
+  <form class="home-form">
+    <md-input #term (keyup)="search(term.value)"
+              class="home-input" ngDefaultControl
+              placeholder="your location...">
+    </md-input>
+  </form>
 
-    <md-card class="search-result" *ngIf="isVisible">
-      <div class="forecast-container">
-        <div class="today forecast">
-          <div class="forecast-header">
-            <div class="day">Today: {{ items.query?.results?.channel?.item?.condition?.date.substring(0,11) }}</div>
-            <div class="day">Sunrise: {{ items.query?.results?.channel?.astronomy?.sunrise }}</div>
-            <div class="day">Sunset: {{ items.query?.results?.channel?.astronomy?.sunset }}</div>
+  <md-card class="search-result" *ngIf="isVisible">
+    <div class="today forecast">
+      <div class="forecast-header">
+        <div class="day">Today: {{ items.query?.results?.channel?.item?.condition?.date.substring(0,11) }}</div>
+        <div class="day">Sunrise: {{ items.query?.results?.channel?.astronomy?.sunrise }}</div>
+        <div class="day">Sunset: {{ items.query?.results?.channel?.astronomy?.sunset }}</div>
+      </div>
+      <div class="forecast-content">
+        <div class="location">
+          {{ items.query?.results?.channel?.location?.city }},
+          {{ items.query?.results?.channel?.location?.country }}
+        </div>
+        <div class="degree">
+          <div class="num">{{ convert(items.query?.results?.channel?.item?.condition?.temp) }}<sup>o</sup>C</div>
+          <div class="forecast-icon">
+            {{items.query?.results?.channel?.item?.condition?.text}}
           </div>
-          <div class="forecast-content">
-            <div class="location">
-              {{ items.query?.results?.channel?.location?.city }},
-              {{ items.query?.results?.channel?.location?.country }}
-            </div>
-            <div class="degree">
-              <div class="num">{{ convert(items.query?.results?.channel?.item?.condition?.temp) }}<sup>o</sup>C</div>
-              <div class="forecast-icon">
-                {{items.query?.results?.channel?.item?.condition?.text}}
-              </div>
-              <img src="http://l.yimg.com/a/i/us/we/52/{{items.query?.results?.channel?.item?.condition?.code}}.gif"/>
-            </div>
-          </div>
+          <img src="http://l.yimg.com/a/i/us/we/52/{{items.query?.results?.channel?.item?.condition?.code}}.gif"/>
         </div>
       </div>
-    </md-card>
+    </div>
   </md-card>
+</md-card>

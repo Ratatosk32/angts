@@ -17,35 +17,36 @@
 </head>
 <body>
 
-  <sd-app>Loading...</sd-app>
+<sd-app>Loading...</sd-app>
 
-  <script>
+<script>
   // Fixes undefined module function in SystemJS bundle
-  function module() {}
-  </script>
+  function module() {
+  }
+</script>
 
-  <!-- shims:js -->
-  <!-- endinject -->
+<!-- shims:js -->
+<!-- endinject -->
 
-  <% if (ENV === 'dev') { %>
-  <script src="<%= APP_BASE %>app/system-config.js"></script>
-  <% } %>
+<% if (ENV === 'dev') { %>
+<script src="<%= APP_BASE %>app/system-config.js"></script>
+<% } %>
 
-  <!-- libs:js -->
-  <!-- endinject -->
+<!-- libs:js -->
+<!-- endinject -->
 
-  <!-- inject:js -->
-  <!-- endinject -->
+<!-- inject:js -->
+<!-- endinject -->
 
-  <% if (ENV === 'dev') { %>
-  <script>
+<% if (ENV === 'dev') { %>
+<script>
   System.import('<%= BOOTSTRAP_MODULE %>')
     .catch(function (e) {
       console.error(e,
         'trololo error');
     });
-  </script>
-  <% } %>
+</script>
+<% } %>
 
 </body>
 </html>

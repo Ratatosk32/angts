@@ -24,7 +24,8 @@ import {YouTubeAPI} from "./youtube";
 
 export class SearchComponent {
 
-  constructor(public youtube: YouTubeAPI) {}
+  constructor(public youtube: YouTubeAPI) {
+  }
 
   private searchTubeStream = new Subject<string>();
 

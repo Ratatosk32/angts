@@ -15,6 +15,7 @@ var users = [
 export class AuthenticationService {
 
   isAuthenticated: boolean = false;
+
   constructor(private _router: Router) {
   }
 
@@ -35,11 +36,14 @@ export class AuthenticationService {
     return false;
   }
 
-  getIsAuthenticated(): boolean { return this.isAuthenticated; }
-/*
-  checkCredentials() {
-    if (localStorage.getItem("user") === null) {
-      this._router.navigate(['home']);
-    }
-  }*/
+  getIsAuthenticated(): boolean {
+    return this.isAuthenticated;
+  }
+
+  /*
+   checkCredentials() {
+   if (localStorage.getItem("user") === null) {
+   this._router.navigate(['home']);
+   }
+   }*/
 }

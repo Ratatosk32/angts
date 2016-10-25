@@ -20,7 +20,8 @@ export class WeatherComponent {
   constructor(private weatherService: WeatherService) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   search(term: string) {
     this.isVisible = false;

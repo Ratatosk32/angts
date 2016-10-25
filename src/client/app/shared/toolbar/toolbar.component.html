@@ -1,12 +1,12 @@
 <md-menu #menu="mdMenu" style="position: absolute; display: inline">
-  <button md-menu-item (click)="logout()"> Sign Out </button>
+  <button md-menu-item (click)="logout()"> Sign Out</button>
 </md-menu>
 <md-toolbar color="primary">
   <button md-icon-button color="primary" [md-menu-trigger-for]="menu">
     <md-icon class="sd-toolbar-icon">menu</md-icon>
   </button>
   <span class="sd-toolbar-filler"></span>
-  <md-icon md-tooltip="Failed authentication" *ngIf="failed" >warning</md-icon>
+  <md-icon md-tooltip="Failed authentication" *ngIf="failed">warning</md-icon>
   <div class="auth">
     <md-input *ngIf="!isAuth" [(ngModel)]="user.email" class="auth-element" type="email" placeholder="login"
               ngDefaultControl>
@@ -15,6 +15,6 @@
               ngDefaultControl>
     </md-input>
   </div>
-  <md-icon  (click)="login()" *ngIf="!isAuth" svgSrc="./assets/svg/account.svg" class="sd-toolbar-icon"></md-icon>
+  <md-icon (click)="login()" *ngIf="!isAuth" svgSrc="./assets/svg/account.svg" class="sd-toolbar-icon"></md-icon>
   <md-icon (click)="logout()" *ngIf="isAuth" svgSrc="./assets/svg/exit.svg" class="sd-toolbar-icon"></md-icon>
 </md-toolbar>

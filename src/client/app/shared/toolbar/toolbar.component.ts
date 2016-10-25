@@ -9,7 +9,7 @@ import {AuthenticationService, User} from "../authentication/authentication.serv
   selector: 'sd-toolbar',
   templateUrl: 'toolbar.component.html',
   styleUrls: ['toolbar.component.css'],
-  providers: [ AuthenticationService]
+  providers: [AuthenticationService]
 })
 
 export class ToolbarComponent implements OnInit {
@@ -17,7 +17,8 @@ export class ToolbarComponent implements OnInit {
   isAuth: boolean = false;
   failed: boolean = false;
 
-  constructor(private _service: AuthenticationService){};
+  constructor(private _service: AuthenticationService) {
+  };
 
   logout() {
     this._service.logout();
