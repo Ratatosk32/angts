@@ -28,7 +28,7 @@ export class AuthenticationService {
     var authenticatedUser = users.find(u => u.email === user.email && u.password === user.password);
     if (authenticatedUser) {
       localStorage.setItem("user", authenticatedUser.toString());
-      this._router.navigate(['weather']);
+      this._router.navigate(['main']);
       this.isAuthenticated = true;
       return true;
     }

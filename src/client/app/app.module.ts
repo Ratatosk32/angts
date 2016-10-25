@@ -5,12 +5,12 @@ import {RouterModule} from "@angular/router";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {routes} from "./app.routes";
-import {WeatherModule} from "./weather/weather.module";
 import {HomeModule} from "./home/home.module";
 import {SharedModule} from "./shared/shared.module";
+import {MainModule} from "./main/main.module";
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), WeatherModule, HomeModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), MainModule, HomeModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

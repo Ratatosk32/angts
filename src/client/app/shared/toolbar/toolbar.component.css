@@ -9,7 +9,7 @@
 .auth {
   padding-left: 5px;
   padding-right: 5px;
-  column-gap: 10px;
+  column-gap: 20px;
 }
 
 .auth-element {
@@ -17,7 +17,3 @@
   color: #e1e1e1;
 }
 
-.auth-element-failed {
-  width: 100px;
-  color: darkred;
-}

@@ -8,7 +8,7 @@ import {WeatherService} from "./weather.service";
 
 @Component({
   moduleId: module.id,
-  selector: 'sd-weather',
+  selector: 'weather-search',
   templateUrl: 'weather.component.html',
   styleUrls: ['weather.component.css'],
   providers: [WeatherService],

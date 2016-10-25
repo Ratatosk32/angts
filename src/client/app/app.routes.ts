@@ -1,8 +1,8 @@
 import {Routes} from "@angular/router";
-import {WeatherRoutes} from "./weather/index";
 import {HomeRoutes} from "./home/index";
+import {MainRoutes} from "./main/main.routes";
 
 export const routes: Routes = [
   ...HomeRoutes,
-  ...WeatherRoutes
+  ...MainRoutes
 ];
