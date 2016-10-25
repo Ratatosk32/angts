@@ -13,7 +13,9 @@ import {AuthenticationService, User} from "../authentication/authentication.serv
 })
 
 export class ToolbarComponent implements OnInit {
+  public user = new User('', '');
   isAuth: boolean = false;
+  failed: boolean = false;
 
   constructor(private _service: AuthenticationService){};
 
@@ -22,21 +24,18 @@ export class ToolbarComponent implements OnInit {
     this.isAuth = false;
   }
 
-  checkCredentials() { this.isAuth = this._service.getIsAuthenticated(); }
-
-  newName: string = '';
-  names: any[] = [];
+  checkCredentials() {
+    this.isAuth = this._service.getIsAuthenticated();
+    this.failed = !this.isAuth
+  }
 
   ngOnInit() {
   }
 
-  public user = new User('', '');
-  public errorMsg = '';
-
   login() {
     if (!this._service.login(this.user)) {
-      this.errorMsg = ' FAILED';
       this.isAuth = false;
+      this.failed = true;
     } else {
       this.checkCredentials();
     }

@@ -5,3 +5,19 @@
 .sd-toolbar-filler {
   flex: 1 1 auto;
 }
+
+.auth {
+  padding-left: 5px;
+  padding-right: 5px;
+  column-gap: 10px;
+}
+
+.auth-element {
+  width: 100px;
+  color: #e1e1e1;
+}
+
+.auth-element-failed {
+  width: 100px;
+  color: darkred;
+}

@@ -6,9 +6,15 @@
     <md-icon class="sd-toolbar-icon">menu</md-icon>
   </button>
   <span class="sd-toolbar-filler"></span>
-  <md-input *ngIf="!isAuth"  [(ngModel)]="user.email" class="validate" type="email"  ngDefaultControl ></md-input>
-  <md-input *ngIf="!isAuth"   [(ngModel)]="user.password"  class="validate" type="password" ngDefaultControl></md-input>
-  <md-icon  (click)="login()" *ngIf="!isAuth" svgSrc="./assets/svg/account.svg" class="sd-toolbar-icon">code</md-icon>
-  <md-icon (click)="logout()" *ngIf="isAuth" svgSrc="./assets/svg/exit.svg" class="sd-toolbar-icon">code</md-icon>
-  <!--<md-icon svgSrc="./assets/svg/more.svg" class="sd-toolbar-icon">code</md-icon>-->
+  <md-icon md-tooltip="Failed authentication" *ngIf="failed" >warning</md-icon>
+  <div class="auth">
+    <md-input *ngIf="!isAuth" [(ngModel)]="user.email" class="auth-element" type="email" placeholder="login"
+              ngDefaultControl>
+    </md-input>
+    <md-input *ngIf="!isAuth" [(ngModel)]="user.password" class="auth-element" type="password" placeholder="password"
+              ngDefaultControl>
+    </md-input>
+  </div>
+  <md-icon  (click)="login()" *ngIf="!isAuth" svgSrc="./assets/svg/account.svg" class="sd-toolbar-icon"></md-icon>
+  <md-icon (click)="logout()" *ngIf="isAuth" svgSrc="./assets/svg/exit.svg" class="sd-toolbar-icon"></md-icon>
 </md-toolbar>

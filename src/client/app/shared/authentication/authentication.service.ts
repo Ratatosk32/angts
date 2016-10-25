@@ -8,7 +8,7 @@ export class User {
 }
 
 var users = [
-  new User('a', 'a')
+  new User('admin', 'admin')
 ];
 
 @Injectable()
@@ -25,9 +25,9 @@ export class AuthenticationService {
   }
 
   login(user: User) {
-    var authenticatedUser = users.find(u => u.email === user.email);
+    var authenticatedUser = users.find(u => u.email === user.email && u.password === user.password);
     if (authenticatedUser) {
-      //localStorage.setItem("user", authenticatedUser);
+      localStorage.setItem("user", authenticatedUser.toString());
       this._router.navigate(['weather']);
       this.isAuthenticated = true;
       return true;
