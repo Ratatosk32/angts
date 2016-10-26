@@ -93,6 +93,16 @@ export class WeatherComponent {
       }
     });
 
+  removeCard(item: WeatherItem): void {
+    this.weatherItems.forEach(function (element, index, array) {
+      // TODO: change to ID
+      if (element.city == item.city) {
+        array.splice(index, 1);
+        return true;
+      }
+      return false;
+    });
+  }
 }
 
 
