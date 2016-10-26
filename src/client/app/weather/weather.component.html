@@ -6,26 +6,17 @@
     </md-input>
   </form>
 
-  <md-card class="search-result" *ngIf="isVisible">
-    <div class="today forecast">
-      <div class="forecast-header">
-        <div class="day">Today: {{ items.query?.results?.channel?.item?.condition?.date.substring(0,11) }}</div>
-        <div class="day">Sunrise: {{ items.query?.results?.channel?.astronomy?.sunrise }}</div>
-        <div class="day">Sunset: {{ items.query?.results?.channel?.astronomy?.sunset }}</div>
-      </div>
-      <div class="forecast-content">
-        <div class="location">
-          {{ items.query?.results?.channel?.location?.city }},
-          {{ items.query?.results?.channel?.location?.country }}
-        </div>
-        <div class="degree">
-          <div class="num">{{ convert(items.query?.results?.channel?.item?.condition?.temp) }}<sup>o</sup>C</div>
-          <div class="forecast-icon">
-            {{items.query?.results?.channel?.item?.condition?.text}}
-          </div>
-          <img src="http://l.yimg.com/a/i/us/we/52/{{items.query?.results?.channel?.item?.condition?.code}}.gif"/>
-        </div>
-      </div>
+  <md-card style="display: flex; justify-content: space-between" *ngIf="isVisible">
+    <div>
+      <div><b>{{ item.location?.city }}, {{ item.location?.country }}</b></div>
+      <div>Today: {{ weatherItem.todayDate }}</div>
+      <div>Sunrise: {{ weatherItem.sunrise }}</div>
+      <div>Sunset: {{ weatherItem.sunset }}</div>
+      <div>Temperature: <b>{{convert(weatherItem.temperature)}}</b><sup><b>o</b></sup><b>C</b></div>
+      <div>Conditions: {{weatherItem.condition}}</div>
+      <img src="http://l.yimg.com/a/i/us/we/52/{{weatherItem.code}}.gif"/>
     </div>
+    <forecast-card *ngFor="let item of weatherItem.forecast" [item]="item"></forecast-card>
   </md-card>
+
 </md-card>

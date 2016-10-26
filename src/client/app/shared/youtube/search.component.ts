@@ -9,7 +9,7 @@ import {YouTubeAPI} from "./youtube";
         <md-input #str (keyup)="searchTube(str.value)" class="home-input" ngDefaultControl
               placeholder="youtube search">
         </md-input>
-        <div style=" position: relative; display: flex;">
+        <div style="display: flex; justify-content: space-between">
         <div class="youtube-card" *ngFor="let video of results | async">
           <p>{{ video.snippet.title?video.snippet.title.substring(0,20):video.snippet.title }}</p>
         <!--<img class="image-size" [src]="video.snippet.thumbnails.default.url"/>-->

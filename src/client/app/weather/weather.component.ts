@@ -6,6 +6,48 @@ import "rxjs/add/operator/switchMap";
 import "rxjs/Rx";
 import {WeatherService} from "./weather.service";
 
+export class WeatherShortDescription {
+  date: string;
+  day: string;
+  high: string;
+  low: string;
+  code: string;
+  text: string;
+  constructor(item: any) {
+    this.date = item.date;
+    this.day = item.day;
+    this.high = item.high;
+    this.low = item.low;
+    this.code = item.code;
+    this.text = item.text;
+  }
+}
+
+export class WeatherItem {
+  sunrise: string;
+  sunset: string;
+  todayDate: string;
+  city: string;
+  country: string;
+  condition: string;
+  code: number;
+  temperature: number;
+  forecast: WeatherShortDescription[] = [];
+  constructor(item: any) {
+    if (item != null && item != undefined) {
+      this.sunrise = item.astronomy.sunrise;
+      this.sunset = item.astronomy.sunset;
+      this.city = item.location.city;
+      this.country = item.location.country;
+      this.todayDate = item.item.condition.date.substring(0,11);
+      this.condition = item.item.condition.text;
+      this.temperature = item.item.condition.temp;
+      this.code = item.item.condition.code;
+      item.item.forecast.forEach((item: any) => {this.forecast.push(new WeatherShortDescription(item))});
+    }
+  }
+}
+
 @Component({
   moduleId: module.id,
   selector: 'weather-search',
@@ -20,8 +62,7 @@ export class WeatherComponent {
   constructor(private weatherService: WeatherService) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   search(term: string) {
     this.isVisible = false;
@@ -31,16 +72,19 @@ export class WeatherComponent {
   convert(temp: number) {
     return ((temp - 32) * 5 / 9).toFixed(0);
   }
-
-  items = this.searchTermStream
+  weatherItem: WeatherItem;
+  item = this.searchTermStream
     .debounceTime(1000)
     .distinctUntilChanged()
     .switchMap((term: string) => this.weatherService.search(term))
     .subscribe(data => {
-      this.isVisible = true;
-      console.log(data);
-      this.items = data
+      if (data.query.results != null) {
+        this.item = data.query.results.channel;
+        this.weatherItem = new WeatherItem(this.item);
+        this.isVisible = true;
+      }
     });
+
 }
 
 
