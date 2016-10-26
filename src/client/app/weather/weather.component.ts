@@ -52,7 +52,6 @@ export class WeatherItem {
   moduleId: module.id,
   selector: 'weather-search',
   templateUrl: 'weather.component.html',
-  styleUrls: ['weather.component.css'],
   providers: [WeatherService],
 })
 export class WeatherComponent {
@@ -72,17 +71,13 @@ export class WeatherComponent {
     this.searchTermStream.next(term);
   }
 
-  convert(temp: number) {
-    return ((temp - 32) * 5 / 9).toFixed(0);
-  }
-
   item = this.searchTermStream
     .debounceTime(1000)
     .distinctUntilChanged()
     .switchMap((term: string) => this.weatherService.search(term))
     .subscribe(data => {
       if (data.query.results != null) {
-        this.item = data.query.results.channel;
+        this.item = Object.create(data.query.results.channel);
         this.weatherItem = new WeatherItem(this.item);
         if (this.weatherItem.temperature
           && this.weatherItem.temperature != undefined

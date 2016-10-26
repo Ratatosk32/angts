@@ -1,2 +1,2 @@
 <md-input #term (keyup)="search(term.value)" placeholder="your location..." ngDefaultControl></md-input>
-<weather-card [weatherItem]="weatherItem" (removeEmitter)="removeCard($event)"></weather-card>
+<weather-card *ngFor="let wi of weatherItems" [weatherItem]="wi" (removeEmitter)="removeCard($event)"></weather-card>

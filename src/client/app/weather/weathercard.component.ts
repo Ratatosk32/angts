@@ -6,7 +6,7 @@ import {WeatherShortDescription, WeatherItem} from "./weather.component";
   inputs: ['weatherItem'],
   outputs: ['removeEmitter'],
   template:  `
-    <md-card style="display: flex; justify-content: space-between">
+    <md-card style="display: flex; justify-content: space-between; margin: 10px;">
     <!--current weather details-->
     <div>
       <img src="http://l.yimg.com/a/i/us/we/52/{{weatherItem?.code}}.gif"/>
@@ -20,7 +20,7 @@ import {WeatherShortDescription, WeatherItem} from "./weather.component";
     </div>
     <!--forecast summary-->
     <forecast-card *ngFor="let item of weatherItem?.forecast" [item]="item"></forecast-card>
-    <button md-fab style="background-color: #e1e1e1"><md-icon>close</md-icon></button>
+    <button md-fab style="background-color: #e1e1e1;" (click)="remove()"><md-icon>close</md-icon></button>
     </md-card>`
 })
 
