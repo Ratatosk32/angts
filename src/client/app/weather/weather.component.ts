@@ -59,6 +59,9 @@ export class WeatherComponent {
   isVisible: boolean = false;
   private searchTermStream = new Subject<string>();
 
+  weatherItem: WeatherItem;
+  weatherItems: WeatherItem[] = [];
+
   constructor(private weatherService: WeatherService) {
   }
 
@@ -72,7 +75,7 @@ export class WeatherComponent {
   convert(temp: number) {
     return ((temp - 32) * 5 / 9).toFixed(0);
   }
-  weatherItem: WeatherItem;
+
   item = this.searchTermStream
     .debounceTime(1000)
     .distinctUntilChanged()
@@ -81,6 +84,11 @@ export class WeatherComponent {
       if (data.query.results != null) {
         this.item = data.query.results.channel;
         this.weatherItem = new WeatherItem(this.item);
+        if (this.weatherItem.temperature
+          && this.weatherItem.temperature != undefined
+          && !isNaN(this.weatherItem.temperature)) {
+          this.weatherItems.push(this.weatherItem);
+        }
         this.isVisible = true;
       }
     });
