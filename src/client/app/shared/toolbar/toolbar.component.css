@@ -1,5 +1,8 @@
-.sd-toolbar-icon {
+.icon {
   color: white;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
 }
 
 .sd-toolbar-filler {
@@ -16,4 +19,20 @@
   width: 100px;
   color: #e1e1e1;
 }
+
+.sidebar {
+  width: 80px;
+  height: 90%;
+  margin-top: 70px;
+  cursor: pointer;
+}
+
+.sidebar-icon {
+  width: 48px;
+  height: 48px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+
 

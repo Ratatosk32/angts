@@ -20,7 +20,7 @@ import {WeatherShortDescription, WeatherItem} from "./weather.component";
     </div>
     <!--forecast summary-->
     <forecast-card *ngFor="let item of weatherItem?.forecast" [item]="item"></forecast-card>
-    <button md-fab style="background-color: #e1e1e1;" (click)="remove()"><md-icon>close</md-icon></button>
+     <md-icon style="cursor: pointer;" svgSrc="./assets/images/close.svg" (click)="remove()">close</md-icon>
     </md-card>`
 })
 

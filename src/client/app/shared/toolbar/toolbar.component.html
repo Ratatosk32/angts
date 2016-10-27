@@ -2,9 +2,9 @@
   <button md-menu-item (click)="logout()"> Sign Out</button>
 </md-menu>
 <md-toolbar color="primary">
-  <button md-icon-button color="primary" [md-menu-trigger-for]="menu">
-    <md-icon class="sd-toolbar-icon">menu</md-icon>
-  </button>
+  <img class="icon"
+       src="./assets/images/menu.png"
+       (click)="toggleSidebar()"/>
   <span class="sd-toolbar-filler"></span>
   <md-icon md-tooltip="Failed authentication" *ngIf="failed">warning</md-icon>
   <div class="auth">
@@ -15,6 +15,32 @@
               ngDefaultControl>
     </md-input>
   </div>
-  <md-icon (click)="login()" *ngIf="!isAuth" svgSrc="./assets/svg/account.svg" class="sd-toolbar-icon"></md-icon>
-  <md-icon (click)="logout()" *ngIf="isAuth" svgSrc="./assets/svg/exit.svg" class="sd-toolbar-icon"></md-icon>
+  <img class="icon" (click)="login()" *ngIf="!isAuth" src="./assets/images/account.png"/>
+  <img class="icon" (click)="logout()" *ngIf="isAuth" src="./assets/images/exit.png"/>
 </md-toolbar>
+
+<ng2-sidebar [(open)]="_open" [closeOnClickOutside]="true">
+  <div class="sidebar">
+    <div><md-icon class="sidebar-icon"
+              svgSrc="./assets/images/weather.svg"
+              (click)="toWeather()"
+              [routerLink]="['/weather']"
+              [routerLinkActive]="['router-link-active']"
+              [routerLinkActiveOptions]="{exact:true}"></md-icon>
+    </div>
+    <div><md-icon class="sidebar-icon"
+              svgSrc="./assets/images/map.svg"
+              (click)="toGeo()"
+              [routerLink]="['/geo']"
+              [routerLinkActive]="['router-link-active']"
+              [routerLinkActiveOptions]="{exact:true}"></md-icon>
+    </div>
+    <div><md-icon class="sidebar-icon"
+              (click)="toYoutube()"
+              svgSrc="./assets/images/video.svg"
+              [routerLink]="['/youtube']"
+              [routerLinkActive]="['router-link-active']"
+              [routerLinkActiveOptions]="{exact:true}"></md-icon>
+    </div>
+  </div>
+</ng2-sidebar>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthenticationService, User} from "../authentication/authentication.service";
+import {Router} from "@angular/router";
 
 /**
  * This class represents the toolbar component.
@@ -17,7 +18,7 @@ export class ToolbarComponent implements OnInit {
   isAuth: boolean = false;
   failed: boolean = false;
 
-  constructor(private _service: AuthenticationService) {
+  constructor(private _service: AuthenticationService, private _router: Router) {
   };
 
   logout() {
@@ -40,6 +41,24 @@ export class ToolbarComponent implements OnInit {
     } else {
       this.checkCredentials();
     }
+  }
+
+  private _open: boolean = false;
+
+  toggleSidebar() {
+    this._open = this.isAuth ? !this._open: false;
+  }
+
+  toGeo(): void {
+    this._router.navigate(['geo']);
+  }
+
+  toYoutube(): void {
+    this._router.navigate(['youtube']);
+  }
+
+  toWeather(): void {
+    this._router.navigate(['weather']);
   }
 }
 

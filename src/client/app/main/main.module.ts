@@ -5,7 +5,7 @@ import {MdRadioModule} from "@angular2-material/radio";
 import {MdIconModule} from "@angular2-material/icon";
 import {MdInputModule} from "@angular2-material/input";
 import {YoutubeModule} from "../shared/youtube/youtube.module";
-import {WeatherModule} from "../weather/weather.module";
+import {WeatherModule} from "../shared/weather/weather.module";
 import {MainComponent} from "./main.component";
 import {GeoModule} from "../shared/geo/geo.module";
 

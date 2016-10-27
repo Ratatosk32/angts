@@ -8,10 +8,12 @@ import {CommonModule} from "@angular/common";
 import {MdInputModule} from "@angular2-material/input";
 import {MdCardModule} from "@angular2-material/card";
 import {FormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {SidebarModule} from "ng2-sidebar";
 
 @NgModule({
   imports: [MdToolbarModule, MdIconModule, MdButtonModule, MdMenuModule, CommonModule, MdInputModule, MdCardModule,
-    FormsModule],
+    FormsModule, RouterModule, SidebarModule],
   declarations: [ToolbarComponent],
   exports: [ToolbarComponent],
 })

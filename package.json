@@ -175,6 +175,7 @@
     "es-module-loader": "^1.0.0",
     "hammerjs": "^2.0.8",
     "ng2-map": "^0.5.2",
+    "ng2-sidebar": "^1.6.1",
     "ng2-youtube-player": "0.0.1",
     "ng2-youtube-player-mini": "^2.0.4",
     "reflect-metadata": "^0.1.8",

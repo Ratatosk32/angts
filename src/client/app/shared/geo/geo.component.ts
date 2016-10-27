@@ -9,6 +9,6 @@ import {Ng2MapComponent} from "ng2-map";
 
 export class GeoComponent {
   constructor() {
-    Ng2MapComponent['apiUrl'] = "https://maps.google.com/maps/api/js?key=KEY";
+    Ng2MapComponent['apiUrl'] = "https://maps.google.com/maps/api/js?key=";
   }
 }
