@@ -5,7 +5,7 @@ import {YouTubeAPI} from "./youtube";
 @Component({
   selector: 'youtube-search',
   template: `
-        <md-card>
+        <md-card style="padding-left:100px; height: 100%">
         <md-input #str (keyup)="searchTube(str.value)" class="home-input" ngDefaultControl
               placeholder="youtube search">
         </md-input>

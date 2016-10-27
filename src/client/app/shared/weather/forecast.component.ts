@@ -5,7 +5,7 @@ import {WeatherShortDescription} from "./weather.component";
   selector: 'forecast-card',
   inputs: ['item'],
   template:  `
-       <div>{{ item.day }}, {{ item.date.substring(0,11) }}</div>
+       <div>{{item.day}}, {{item.date.substring(0,7)}}</div>
        <div>Max: <b>{{convert(item.high)}}</b><sup><b>o</b></sup><b>C</b></div>
        <div>Min: <b>{{convert(item.low)}}</b><sup><b>o</b></sup><b>C</b></div>
        <img src="http://l.yimg.com/a/i/us/we/52/{{item.code}}.gif"/>`

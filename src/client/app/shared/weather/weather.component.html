@@ -1,2 +1,4 @@
+<div style="padding-left:100px; padding-right: 20px">
 <md-input #term (keyup)="search(term.value)" placeholder="your location..." ngDefaultControl></md-input>
 <weather-card *ngFor="let wi of weatherItems" [weatherItem]="wi" (removeEmitter)="removeCard($event)"></weather-card>
+</div>

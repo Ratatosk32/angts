@@ -6,7 +6,7 @@ import {WeatherShortDescription, WeatherItem} from "./weather.component";
   inputs: ['weatherItem'],
   outputs: ['removeEmitter'],
   template:  `
-    <md-card style="display: flex; justify-content: space-between; margin: 10px;">
+    <md-card style="display: flex; justify-content: space-between; margin-top: 10px;">
     <!--current weather details-->
     <div>
       <img src="http://l.yimg.com/a/i/us/we/52/{{weatherItem?.code}}.gif"/>
