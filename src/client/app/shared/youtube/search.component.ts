@@ -5,9 +5,8 @@ import {YouTubeAPI} from "./youtube";
 @Component({
   selector: 'youtube-search',
   template: `
-        <md-card style="padding-left:100px; height: 100%">
-        <md-input #str (keyup)="searchTube(str.value)" class="home-input" ngDefaultControl
-              placeholder="youtube search">
+        <div style="padding-left:100px; height: 90%">
+        <md-input #str (keyup)="searchTube(str.value)"  ngDefaultControl placeholder="youtube search">
         </md-input>
         <div style="display: flex; justify-content: space-between">
         <div class="youtube-card" *ngFor="let video of results | async">
@@ -17,7 +16,7 @@ import {YouTubeAPI} from "./youtube";
         </youtube-player>
         </div>
         </div>
-        </md-card>
+        </div>
         `,
   providers: [YouTubeAPI]
 })

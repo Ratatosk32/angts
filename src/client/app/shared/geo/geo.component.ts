@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {Ng2MapComponent} from "ng2-map";
+import {KEY} from "./key";
 
 @Component({
   selector: 'geo-search',
@@ -9,6 +10,6 @@ import {Ng2MapComponent} from "ng2-map";
 
 export class GeoComponent {
   constructor() {
-    Ng2MapComponent['apiUrl'] = "https://maps.google.com/maps/api/js?key=";
+    Ng2MapComponent['apiUrl'] = "https://maps.google.com/maps/api/js?key=" + KEY;
   }
 }
