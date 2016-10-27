@@ -60,5 +60,15 @@ export class ToolbarComponent implements OnInit {
   toWeather(): void {
     this._router.navigate(['weather']);
   }
+
+  toggleHandler(toggle) {
+    toggle.addEventListener("click", function(e) {
+      e.preventDefault();
+      (this.classList.contains("is-active") === true)
+        ? this.classList.remove("is-active")
+        : this.classList.add("is-active");
+    });
+    this.toggleSidebar();
+  }
 }
 
