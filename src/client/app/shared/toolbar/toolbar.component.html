@@ -3,12 +3,13 @@
   <span class="sd-toolbar-filler"></span>
   <md-icon md-tooltip="Failed authentication" *ngIf="failed">warning</md-icon>
   <div class="auth">
-    <md-input *ngIf="!isAuth" [(ngModel)]="user.email" class="auth-element" type="email" placeholder="login"
-              ngDefaultControl>
-    </md-input>
-    <md-input *ngIf="!isAuth" [(ngModel)]="user.password" class="auth-element" type="password" placeholder="password"
-              ngDefaultControl>
-    </md-input>
+    <div class="form-group">
+      <input type="text" *ngIf="!isAuth" [(ngModel)]="user.email"  class="form-control auth-element"  placeholder="login">
+    </div>
+    <span class="sd-toolbar-filler"></span>
+    <div class="form-group" style="margin-left: 10px">
+      <input type="password"  *ngIf="!isAuth" [(ngModel)]="user.password" class="form-control auth-element"  placeholder="password">
+    </div>
   </div>
   <img class="icon" (click)="login()" *ngIf="!isAuth" src="./assets/images/account.png"/>
   <img class="icon" (click)="logout()" *ngIf="isAuth" src="./assets/images/exit.png"/>

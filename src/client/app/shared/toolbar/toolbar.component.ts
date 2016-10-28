@@ -24,6 +24,7 @@ export class ToolbarComponent implements OnInit {
   logout() {
     this._service.logout();
     this.isAuth = false;
+    this._open =  false;
   }
 
   checkCredentials() {
@@ -62,10 +63,9 @@ export class ToolbarComponent implements OnInit {
   }
 
   toggleHandler(toggle:any) {
-    toggle.classList.contains("is-active")
+    (toggle.classList.contains("is-active") === true)
       ? toggle.classList.remove("is-active")
       : toggle.classList.add("is-active");
-    toggle.classList.add("c-hamburger");
     this.toggleSidebar();
   }
 }
