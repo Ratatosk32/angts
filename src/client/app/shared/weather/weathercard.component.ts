@@ -9,14 +9,14 @@ import {WeatherShortDescription, WeatherItem} from "./weather.component";
     <md-card style="display: flex; justify-content: space-between; margin-top: 10px;">
     <!--current weather details-->
     <div>
-      <img src="http://l.yimg.com/a/i/us/we/52/{{weatherItem?.code}}.gif"/>
-      <div><h1><b>{{convert(weatherItem?.temperature)}}</b><sup><b>o</b></sup><b>C</b></h1></div>
-    </div>
-    <div>
       <div><b>{{ weatherItem?.city }}, {{ weatherItem?.country }}</b></div>
       <div>Today: {{ weatherItem?.todayDate }}</div>
       <div>Sunrise: {{ weatherItem?.sunrise }}</div>
       <div>Sunset: {{ weatherItem?.sunset }}</div>
+    </div>
+     <div>
+      <div><h1><b>{{convert(weatherItem?.temperature)}}</b><sup><b>o</b></sup><b>C</b></h1></div>
+      <img src="http://l.yimg.com/a/i/us/we/52/{{weatherItem?.code}}.gif"/>
     </div>
     <!--forecast summary-->
     <forecast-card *ngFor="let item of weatherItem?.forecast" [item]="item"></forecast-card>

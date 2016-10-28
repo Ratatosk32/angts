@@ -61,13 +61,11 @@ export class ToolbarComponent implements OnInit {
     this._router.navigate(['weather']);
   }
 
-  toggleHandler(toggle) {
-    toggle.addEventListener("click", function(e) {
-      e.preventDefault();
-      (this.classList.contains("is-active") === true)
-        ? this.classList.remove("is-active")
-        : this.classList.add("is-active");
-    });
+  toggleHandler(toggle:any) {
+    toggle.classList.contains("is-active")
+      ? toggle.classList.remove("is-active")
+      : toggle.classList.add("is-active");
+    toggle.classList.add("c-hamburger");
     this.toggleSidebar();
   }
 }
